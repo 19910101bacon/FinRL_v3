@@ -38,10 +38,10 @@ def train_stock_trading():
     processed = fe.preprocess_data(df)
 
     list_ticker = processed["tic"].unique().tolist()
-    list_date = list(pd.date_range(processed['date'].min(),processed['date'].max()).astype(str))
-    combination = list(itertools.product(list_date,list_ticker))
+    list_date = list(pd.date_range(processed['date'].min(), processed['date'].max()).astype(str))
+    combination = list(itertools.product(list_date, list_ticker))
 
-    processed_full = pd.DataFrame(combination,columns=["date","tic"]).merge(processed,on=["date","tic"],how="left")
+    processed_full = pd.DataFrame(combination, columns=["date", "tic"]).merge(processed, on=["date", "tic"], how="left")
     processed_full = processed_full[processed_full['date'].isin(processed['date'])]
     processed_full = processed_full.sort_values(['date','tic'])
 
@@ -77,31 +77,31 @@ def train_stock_trading():
     agent = DRLAgent(env=env_train)
 
     print("==============Model Training===========")
-    now = datetime.datetime.now().strftime("%Y%m%d-%Hh%M")
 
-    model_sac = agent.get_model("sac")
+    model_type = 'sac'
+    model_sac = agent.get_model(model_type)
     trained_sac = agent.train_model(
-        model=model_sac, tb_log_name="sac", total_timesteps=80000
+        model=model_sac, tb_log_name=model_type, total_timesteps=80000
     )
 
     print("==============Start Trading===========")
     e_trade_gym = StockTradingEnv(df=trade, turbulence_threshold=250, **env_kwargs)
 
     df_account_value, df_actions = DRLAgent.DRL_prediction(
-        model=trained_sac, environment = e_trade_gym
+        model=trained_sac, environment=e_trade_gym
     )
     df_account_value.to_csv(
-        "./" + config.RESULTS_DIR + "/df_account_value_" + now + ".csv"
+        "./" + config.RESULTS_DIR + "/df_account_value_" + model_type + config.START_TRADE_DATE + ".csv"
     )
-    df_actions.to_csv("./" + config.RESULTS_DIR + "/df_actions_" + now + ".csv")
+    df_actions.to_csv("./" + config.RESULTS_DIR + "/df_actions_" + model_type + config.START_TRADE_DATE + ".csv")
 
     print("==============Get Backtest Results===========")
     perf_stats_all = backtest_stats(df_account_value)
     perf_stats_all = pd.DataFrame(perf_stats_all)
-    perf_stats_all.to_csv("./" + config.RESULTS_DIR + "/perf_stats_all_" + now + ".csv")
+    perf_stats_all.to_csv("./" + config.RESULTS_DIR + "/perf_stats_all_" + model_type + config.START_TRADE_DATE + ".csv")
 
 
-#def train_portfolio_allocation():
+
 
 
 
