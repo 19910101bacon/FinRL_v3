@@ -31,10 +31,10 @@ RESULTS_DIR = f"results"
 
 
 ## time_fmt = '%Y-%m-%d'
-START_DATE = "2009-01-01"
-END_DATE = "2021-01-01"
+START_DATE = "2018-01-01"
+END_DATE = "2021-09-01"
 
-START_TRADE_DATE = "2019-01-01"
+START_TRADE_DATE = "2021-08-01"
 
 ## dataset default columns
 DEFAULT_DATA_COLUMNS = ["date", "tic", "close"]
@@ -73,7 +73,7 @@ SRI_KEHATI_TICKER = [
 		"AALI.JK",
 		"ADHI.JK",
 		"ASII.JK",
-		"BBCA.JK", 
+		"BBCA.JK",
 		"BBNI.JK",
 		"BBRI.JK",
 		"BBTN.JK",
@@ -1213,35 +1213,35 @@ CAC_40_TICKER = [
 
 # DAX 30 constituents at 2021/02
 DAX_30_TICKER = [
-	"DHER.DE", 
-	"RWE.DE", 
+	"DHER.DE",
+	"RWE.DE",
 	"FRE.DE",
 	"MTX.DE",
-	"MRK.DE", 
-	"LIN.DE", 
-	"ALV.DE", 
-	"VNA.DE", 
-	"EOAN.DE", 
-	"HEN3.DE", 
-	"DAI.DE", 
-	"DB1.DE", 
-	"DPW.DE", 
-	"DWNI.DE", 
-	"BMW.DE", 
-	"DTE.DE", 
-	"VOW3.DE", 
-	"MUV2.DE", 
-	"1COV.DE", 
-	"SAP.DE", 
-	"FME.DE", 
-	"BAS.DE", 
-	"BAYN.DE", 
-	"BEI.DE", 
-	"CON.DE", 
-	"SIE.DE", 
-	"ADS.DE", 
-	"HEI.DE", 
-	"DBK.DE", 
+	"MRK.DE",
+	"LIN.DE",
+	"ALV.DE",
+	"VNA.DE",
+	"EOAN.DE",
+	"HEN3.DE",
+	"DAI.DE",
+	"DB1.DE",
+	"DPW.DE",
+	"DWNI.DE",
+	"BMW.DE",
+	"DTE.DE",
+	"VOW3.DE",
+	"MUV2.DE",
+	"1COV.DE",
+	"SAP.DE",
+	"FME.DE",
+	"BAS.DE",
+	"BAYN.DE",
+	"BEI.DE",
+	"CON.DE",
+	"SIE.DE",
+	"ADS.DE",
+	"HEI.DE",
+	"DBK.DE",
 	"IFX.DE"
 ]
 
